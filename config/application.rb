@@ -49,5 +49,11 @@ module CryptoBot
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+    config.telegram_updates_controller.session_store = :redis_store, "redis://localhost:6379/0/cache", { expires_in: 90.minutes }
+    config.event_store = RailsEventStore::Client.new
+
+    # AggregateRoot.configure do |config|
+    #   config.default_event_store = Rails.application.config.event_store
+    # end
   end
 end

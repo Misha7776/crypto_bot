@@ -30,4 +30,27 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  hello: "Hello %{username}! Choose one of the option to start."
+  anonymous_hello: 'Hi there!'
+  get_all_button: "Check available currencies"
+  help_button: "Need help"
+  help_text: "You need some help? Don't worry I will help you!"
+  about_button: 'About'
+  about_text: 'Pet project made by Misha Push. Purpose: view crypto currency prices. Create, update and delete you custom currencies and it orders'
+  get_all_text: 'Please choose a crypto currency to view its details'
+  create_currency_button: 'Create new currency'
+  update_currency_button: 'Update existing currency'
+  delete_currency_button: 'Delete existing currency'
+  error: 'Sorry, this command is not support'
+  change_log_button: 'View change log for %{currency}'
+  enter_name: 'To create a new crypto currency, please enter name'
+  enter_symbol: 'Please enter symbol of a new currency'
+  currency_save: 'Success! Currency saved!'
+  change_log_empty: 'The change log is empty for this currency'
+  what_to_update: 'Select currency to update it'
+  enter_update_name: 'Please enter new name for this currency'
+  enter_update_symbol: 'Please enter new symbol for this currency'
+  enter_update_bid: 'Please enter new bid for this currency. Format: price/size'
+  enter_update_ask: 'Please enter new ask for this currency. Format: price/size'
+  currency_updated: 'Success! Currency updated!'
+  what_to_delete: 'Select currency to delete it'
