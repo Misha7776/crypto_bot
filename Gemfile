@@ -3,14 +3,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.0'
 
-gem 'api-pagination'
-gem 'apitome'
-gem 'blueprinter'
 gem 'bootsnap', '>= 1.4.2', require: false
-gem 'devise-jwt'
 gem 'httparty'
-gem 'oj'
-gem 'pagy'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
 gem 'rack-cors'
@@ -19,7 +13,6 @@ gem 'rails_event_store'
 gem 'r_creds'
 gem 'redis'
 gem 'redis-rails'
-gem 'rspec_api_documentation'
 gem 'sidekiq'
 gem 'telegram-bot'
 gem 'xlog'

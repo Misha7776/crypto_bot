@@ -12,11 +12,36 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
+/vendor/
+/.idea
+/.rvmrc
+/test/
+.rake_tasks~
+/public/uploads/
+/.ruby-gemset
+temp
+/config/database.yml
+/public/packs
+/public/packs-test
+yarn-debug.log*
+.yarn-integrity
+/backup/
 
 # Ignore uploaded files in development.
 /storage/*
 !/storage/.keep
 .byebug_history
 
+# Ignore Redis dump
+*.rdb
+
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+# Docker sensetive files
+.env
+*.env
+entrypoint.sh
+nginx.conf
+/results
+coverage/

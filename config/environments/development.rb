@@ -50,5 +50,6 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
   config.active_record.cache_versioning = false
-  config.cache_store = :redis_store, { url: "redis://localhost:6379/0/cache", expires_in: 90.minutes }
+  # config.cache_store = :redis_store, { url: RCreds.fetch(:redis_url), expires_in: 90.minutes }
+  config.cache_store = :redis_cache_store, { url: ENV.fetch("REDIS_URL_CACHING", 'redis://redis:6379/0'), expires_in: 90.minutes }
 end

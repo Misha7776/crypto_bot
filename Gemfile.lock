@@ -62,10 +62,6 @@ GEM
       public_suffix (>= 2.0.2, < 5.0)
     aggregate_root (1.1.1)
       ruby_event_store (= 1.1.1)
-    api-pagination (4.8.2)
-    apitome (0.3.0)
-      kramdown
-      railties
     arkency-command_bus (0.4.0)
       thread_safe
     ast (2.4.1)
@@ -73,8 +69,6 @@ GEM
       descendants_tracker (~> 0.0.4)
       ice_nine (~> 0.11.0)
       thread_safe (~> 0.3, >= 0.3.1)
-    bcrypt (3.1.16)
-    blueprinter (0.25.1)
     bootsnap (1.4.8)
       msgpack (~> 1.0)
     bounded_context (1.1.1)
@@ -94,30 +88,9 @@ GEM
     database_cleaner (1.8.5)
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
-    devise (4.7.3)
-      bcrypt (~> 3.0)
-      orm_adapter (~> 0.1)
-      railties (>= 4.1.0)
-      responders
-      warden (~> 1.2.3)
-    devise-jwt (0.8.0)
-      devise (~> 4.0)
-      warden-jwt_auth (~> 0.5)
     diff-lcs (1.4.4)
     docile (1.3.2)
     dotenv (2.7.6)
-    dry-auto_inject (0.7.0)
-      dry-container (>= 0.3.4)
-    dry-configurable (0.11.6)
-      concurrent-ruby (~> 1.0)
-      dry-core (~> 0.4, >= 0.4.7)
-      dry-equalizer (~> 0.2)
-    dry-container (0.7.2)
-      concurrent-ruby (~> 1.0)
-      dry-configurable (~> 0.1, >= 0.1.3)
-    dry-core (0.4.9)
-      concurrent-ruby (~> 1.0)
-    dry-equalizer (0.3.0)
     equalizer (0.0.11)
     erubi (1.9.0)
     erubis (2.7.0)
@@ -150,9 +123,6 @@ GEM
     i18n (1.8.5)
       concurrent-ruby (~> 1.0)
     ice_nine (0.11.2)
-    jwt (2.2.2)
-    kramdown (2.3.0)
-      rexml
     kwalify (0.7.2)
     launchy (2.5.0)
       addressable (~> 2.7)
@@ -177,15 +147,11 @@ GEM
     minitest (5.14.2)
     msgpack (1.3.3)
     multi_xml (0.6.0)
-    mustache (1.1.1)
     mustermann (1.1.1)
       ruby2_keywords (~> 0.0.1)
     nio4r (2.5.4)
     nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
-    oj (3.10.14)
-    orm_adapter (0.5.0)
-    pagy (3.8.3)
     parallel (1.19.2)
     parser (2.7.1.5)
       ast (~> 2.4.1)
@@ -274,14 +240,7 @@ GEM
       psych (~> 3.1.0)
       rainbow (>= 2.0, < 4.0)
     regexp_parser (1.8.1)
-    responders (3.0.1)
-      actionpack (>= 5.0)
-      railties (>= 5.0)
     rexml (3.2.4)
-    rspec (3.9.0)
-      rspec-core (~> 3.9.0)
-      rspec-expectations (~> 3.9.0)
-      rspec-mocks (~> 3.9.0)
     rspec-core (3.9.3)
       rspec-support (~> 3.9.3)
     rspec-expectations (3.9.2)
@@ -302,10 +261,6 @@ GEM
       rspec-core (~> 3.0, >= 3.0.0)
       sidekiq (>= 2.4.0)
     rspec-support (3.9.3)
-    rspec_api_documentation (6.1.0)
-      activesupport (>= 3.0.0)
-      mustache (~> 1.0, >= 0.99.4)
-      rspec (~> 3.0)
     rubocop (0.92.0)
       parallel (~> 1.10)
       parser (>= 2.7.1.5)
@@ -381,13 +336,6 @@ GEM
       coercible (~> 1.0)
       descendants_tracker (~> 0.0, >= 0.0.3)
       equalizer (~> 0.0, >= 0.0.9)
-    warden (1.2.9)
-      rack (>= 2.0.9)
-    warden-jwt_auth (0.5.0)
-      dry-auto_inject (~> 0.6)
-      dry-configurable (~> 0.9)
-      jwt (~> 2.1)
-      warden (~> 1.2)
     webmock (3.9.1)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
@@ -402,23 +350,17 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  api-pagination
-  apitome
-  blueprinter
   bootsnap (>= 1.4.2)
   brakeman
   bullet
   byebug
   database_cleaner
-  devise-jwt
   dotenv
   factory_bot_rails
   faker
   fakeredis
   httparty
   listen (>= 3.0.5, < 3.2)
-  oj
-  pagy
   pg (>= 0.18, < 2.0)
   pry
   puma (~> 3.11)
@@ -430,7 +372,6 @@ DEPENDENCIES
   redis-rails
   rspec-rails (~> 4.0, >= 4.0.1)
   rspec-sidekiq
-  rspec_api_documentation
   rubocop
   rubycritic
   sidekiq

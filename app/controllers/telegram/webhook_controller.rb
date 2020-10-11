@@ -5,7 +5,6 @@ module Telegram
     include Telegram::Bot::UpdatesController::MessageContext
     include Telegram::Bot::UpdatesController::Session
     after_action :call_back_answer, only: :callback_query
-    use_session!
 
     def message(_message); end
 

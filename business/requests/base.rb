@@ -3,7 +3,7 @@
 module Requests
   class Base < BaseAction
     include HTTParty
-    base_uri 'localhost:3000'
+    base_uri ENV.fetch('CRYPTO_API_HOST', RCreds.fetch(:api_url))
 
     private
 
