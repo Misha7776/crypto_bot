@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
-rm -f tmp/pids/server.pid
 
-bundle exec rake db:migrate 2>/dev/null || bundle exec rake db:setup
+# Wait for Redis
+until nc -z -v -w30 redis 6379;
+do
+  echo 'Waiting for Redis...'
+  sleep 1;
+done
+echo 'Redis is up and running'
 
-if [[ "$RAILS_ENV" == "production" ]]; then\
-  bundle install --jobs 20 --retry 5 --without development test;\
-  else bundle install --jobs 20 --retry 5; fi
-
-yarn install
-
-bundle exec puma -C "config/puma.rb"
+bundle exec rake telegram:bot:poller
+echo 'Started bot poller.'

@@ -1,65 +1,51 @@
-version: '3'
-
-# To access data postgres writes within container from host machine
-volumes:
-  postgres_data: {}
+version: '3.5'
 
 services:
-  db:
-    image: postgres:11-alpine
-    restart: always
-    environment:
-      POSTGRES_PASSWORD: $POSTGRES_PASSWORD
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-    ports:
-      - "5432"
-    # For using pry
-    stdin_open: true
-    tty: true  
-
-  redis:
-    image: redis:alpine
-    ports:
-      - "6379:6380"
-
-  app:
+  # --- #  Rails App # --- #
+  telegram_bot: &rails_app
+    image: crypto_bot
+    container_name: crypto_bot
     build:
       context: .
       dockerfile: ./docker/app/Dockerfile
-    env_file:
-      - .env.development
     volumes:
       - .:/app
-    depends_on:
-      - db
-      - redis
-    ports:
-      - "3000:3000"
-    # For using pry
-    stdin_open: true
     tty: true
-
-  sidekiq:
-    build:
-      context: .
-      dockerfile: ./docker/app/Dockerfile
-    env_file:
-      - .env
+    stdin_open: true
+    restart: on-failure
+    environment:
+      RAILS_ENV: development
+      RAILS_MAX_THREADS: 5
+      DATABASE_URL: postgresql://host.docker.internal:5432/crypto_market_api_development
+      DATABASE_USER: mishapush
+      DATABASE_PORT: 5432
+      DATABASE_HOST: host.docker.internal
+      REDIS_URL_CACHING: redis://redis:6379/0
+      CRYPTO_API_HOST: host.docker.internal:3000
     depends_on:
-      - db
       - redis
-    command: bundle exec sidekiq
-
-  web:
-    build:
-      context: .
-      dockerfile: ./docker/web/Dockerfile
-      args:
-        RAILS_ENV: development
-
-    depends_on:
-      - app
-
     ports:
-      - 80:80
+      - 3000:3000 # HostPort:ContainerPort
+      - 5432:5432
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:3000" ]
+      interval: 5m
+      start_period: 1m
+
+  # --- # Redis # --- #
+  redis:
+    container_name: crypto_bot_redis
+    image: 'redis:5-alpine'
+    command: redis-server
+    ports:
+      - '6379:6379'
+    volumes:
+      - 'redis:/data'
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+volumes:
+  redis:

@@ -24,7 +24,7 @@ module Commands
     end
 
     def find_currency
-      currency_id ||= webhook.payload['data'].split('/').last&.to_i
+      currency_id ||= webhook.payload['data']&.split('/').last&.to_i
       @currency = Currency.find_by(id: currency_id)
     end
 
